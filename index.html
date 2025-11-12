@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">>
+    <title>Formulario básico - Deshielo de glaciares</title>
+    <link rel="stylesheet" href="estilospx.css">
+  </head>
+  <body>
+    <!-- <?php
+      include 'configdb.php';
+      $conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD); //Conecta con la base de datos
+      $conexion -> set_charset("utf8");
+    ?> -->
+     <nav>
+      <a href="deshielo.html">Inicio</a>
+      <a href="formulariodeshielo.html">Formulario</a>
+    </nav>
+    <h1>Formulario de observación</h1>
+    <form action="guardar.php" method="post">
+        <label>Nombre completo:</label>
+        <input type="text" name="nombre" required>
+        <label>Correo electrónico:</label>
+        <input type="email" name="email" required>
+        <label>Teléfono:</label>
+        <input type="tel" name="telefono">
+        <label>Fecha de observación:</label>
+        <input type="date" name="fecha" required>
+
+        <label>Tipo de observación:</label>
+        <select name="tipo_observacion_id" required>
+          <!-- <?php
+            $consulta = "SELECT id, nombre FROM tipo_observacion ORDER BY nombre";
+            $resultado = $conexion->query($consulta);
+            if ($resultado && $resultado->num_rows > 0) {
+                while ($fila = $resultado->fetch_assoc()) {
+                    echo '<option value="'.$fila['id'].'">'.$fila['nombre'].'</option>';
+                }
+            }
+          ?> -->
+        </select>
+
+        <label>Descripción / Observaciones:</label>
+        <textarea name="descripcion" rows="4" cols="40"></textarea>   
+        <label>¿Permites uso de tus datos para investigación?</label>
+
+      <div id="seleccionar">
+        <!-- <?php
+          $consulta = "SELECT nombre, valor FROM metodo_contacto ORDER BY id";
+          $resultado = $conexion->query($consulta);
+
+          if ($resultado && $resultado->num_rows > 0) {
+              while ($fila = $resultado->fetch_assoc()) {
+                  echo '<input type="checkbox" name="'.$fila['valor'].'" value="'.$fila['valor'].'">'.$fila['nombre'];
+              }
+          }
+        ?> -->
+      </div>
+
+      <input type="submit" value="Enviar" class="botones"></input>
+      <input type="reset" value="Resetear" class="botones"></input>
+    </form>
+  </body>
+</html>
